@@ -11,3 +11,51 @@ Roti Tawar
 Kopi Sachet
 3
 3
+
+import java.util.*;
+import java.lang.Math;
+
+public class JavaApplication {
+    private static Scanner input = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        int n, i;
+
+        n = Integer.parseInt(input.nextLine());
+        String[] nama = new String[n];
+        int[] stok = new int[n], terjual = new int[n];
+        int[] b = new int[n];
+
+        i = 0;
+        for (i = 0; i <= n - 1; i++) {
+            System.out.println("Barang" + i + 1);
+            nama[i] = input.nextLine();
+            stok[i] = Integer.parseInt(input.nextLine());
+            while (stok[i] <= 0) {
+                System.out.println("INVALID");
+                stok[i] = Integer.parseInt(input.nextLine());
+            }
+            terjual[i] = Integer.parseInt(input.nextLine());
+            while (stok[i] < terjual[i]) {
+                System.out.println("INVALID");
+                terjual[i] = Integer.parseInt(input.nextLine());
+            }
+        }
+        for (i = 0; i <= n - 1; i++) {
+            System.out.println("Nama" + nama[i]);
+            System.out.println("Stok:" + stok[i]);
+            System.out.println("Terjual:" + terjual[i]);
+            if (stok[i] == 0) {
+                System.out.println("Sisa Status:Habis, segera restock!");
+            } else {
+                if (stok[i] < 5) {
+                    System.out.println("Sisa Status:Stok menipis.");
+                } else {
+                    if (stok[i] >= 5) {
+                        System.out.println("Stok aman");
+                    }
+                }
+            }
+        }
+    }
+}

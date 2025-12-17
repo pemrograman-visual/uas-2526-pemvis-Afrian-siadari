@@ -5,3 +5,69 @@
 3
 1
 4
+
+
+
+import java.util.*;
+import java.lang.Math;
+
+public class JavaApplication {
+    private static Scanner input = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        int n, maks, min, rt, i;
+        double rata, dr;
+
+        dr = 0;
+        rata = 0;
+        rt = 0;
+        i = 0;
+        n = Integer.parseInt(input.nextLine());
+        int[] rate = new int[n];
+
+        i = 0;
+        for (i = 0; i <= n - 1; i++) {
+            rate[i] = Integer.parseInt(input.nextLine());
+            while (rate[i] > 5 || rate[i] < 1) {
+                System.out.println("INVALID");
+                rate[i] = Integer.parseInt(input.nextLine());
+            }
+            rata = rata + rate[i];
+            if (rate[i] >= 4) {
+                rt = rt + 1;
+            }
+        }
+        rata = rata / n;
+        maks = rate[0];
+        min = rate[0];
+        for (i = 0; i <= n - 1; i++) {
+            if (rate[i] > maks) {
+                maks = rate[i];
+            } else {
+                maks = maks;
+            }
+        }
+        for (i = 0; i <= n - 1; i++) {
+            if (rate[i] < min) {
+                min = rate[i];
+            } else {
+                min = min;
+            }
+        }
+        System.out.println("Rata-rata:" + rata);
+        System.out.println("Tertinggi:" + maks);
+        System.out.println("Terendah:" + min);
+        System.out.println("Reviewer rating ≥4:" + rt);
+        if (rata < 3) {
+            System.out.println("Kantin perlu evaluasi manajemen!");
+        } else {
+            if (rata >= 3 && rata < 4) {
+                System.out.println("Kondisi cukup, masih perlu peningkatan");
+            } else {
+                if (rata >= 4) {
+                    System.out.println("Kantin dalam kondisi baik");
+                }
+            }
+        }
+    }
+}
